@@ -1,0 +1,48 @@
+<div  fxLayout="row wrap" fxLayoutGap="10px" n>
+    <mat-card fxFlex.sm="0 1 calc(50%-10px)" fxFlex.md="0 1 calc(33%-10px)" fxFlex.gt-md="0 1 calc(25%-10px)"
+    *ngFor="let photo of photoList;let i = index">
+      <img  src="{{photo.thumbnailUrl}}" class="image">
+      <mat-card-content>
+          <div>
+          <strong>Id:</strong> <span>{{photo.id}}</span>
+      </div>
+      <div>
+        <strong>Title:</strong> <span>{{photo.title}}</span>
+    </div>
+    <div>
+        <strong>Url:</strong> <span>{{photo.url}}</span>
+    </div>
+    </mat-card-content>
+      <mat-card-actions><button mat-button *ngIf="photo.isAdded == false" (click)="addCompare(photo)">Compare</button>
+        <button mat-button *ngIf="photo.isAdded == true" (click)="removeCompare(photo)">Remove</button></mat-card-actions>
+    </mat-card>
+
+
+
+
+<div *ngIf="photolistCompareData.length >0">
+    <table class="default-table mat-box-shadow" style="width: 100%; padding-top: 50px;">
+        <thead>
+          <tr>
+            <th width="30%"></th>
+            <th width="30%">Id</th>
+            <th width="30%">Title</th>
+            <th width="30%">Url</th>
+           
+          </tr>
+        </thead>
+        <tbody >
+          <tr *ngFor="let item of photolistCompareData;let i = index">
+            <td>Photo {{i+1}}</td>
+            <td>{{ item?.id }}</td>
+            
+            <td>{{ item?.title}}</td>
+            <td>{{ item?.url }}</td>
+          </tr>
+        </tbody>
+       
+       </table>
+</div>
+
+
+    
